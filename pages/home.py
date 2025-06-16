@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 import urllib.parse
 
+dash.register_page(__name__, path='/')
 
 #Spotify API
 import spotipy
@@ -23,8 +24,6 @@ def get_album_image(track_name, artist_name):
 
 
 
-
-dash.register_page(__name__, path='/')
 
 # Load your data
 df = pd.read_csv("cleaned_spotify_features.csv")

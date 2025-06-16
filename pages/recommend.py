@@ -4,7 +4,7 @@ import pandas as pd
 
 dash.register_page(__name__, path='/recommend')
 
-df = pd.read_csv("your_dataset.csv")  # Contains your clustered song features
+df = pd.read_csv("cleaned_spotify_features.csv")  # Contains your clustered song features
 
 layout = html.Div([
     html.H2("🎧 Get Song Recommendations"),

@@ -11,8 +11,13 @@ app = dash.Dash(__name__, use_pages=True)
 server = app.server
 
 app.layout = html.Div([
-    html.H1("Spotify Dashboard"),
-    dcc.Location(id="url"),
+    html.H1("🎵 Spotify Dashboard"),
+    
+    html.Div([
+        dcc.Link("🏠 Home", href="/", style={'margin': '10px'}),
+        dcc.Link("🔍 Recommender", href="/recommend", style={'margin': '10px'}),
+    ], style={'marginBottom': '20px'}),
+    
     dash.page_container
 ])
 
