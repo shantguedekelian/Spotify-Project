@@ -27,6 +27,7 @@ def get_album_image(track_name, artist_name):
 
 # Load your data
 df = pd.read_csv("cleaned_spotify_features.csv")
+df = df.drop(columns=['index'], axis=1).reset_index()
 df['link'] = df['index'].apply(lambda x: f"https://open.spotify.com/search/{urllib.parse.quote(df.iloc[x]['track_name']+" "+df.iloc[x]['artist_name'])}")
 df['emoji_vibe'] = df['vibe_cluster'].map({
     'Hype/Workout': "💪",
@@ -37,7 +38,7 @@ df['emoji_vibe'] = df['vibe_cluster'].map({
     'Moody Intensity': "🌌"
 })
 
-customdata = df[["track_name", "artist_name", "popularity", "genre", "emoji_vibe", "vibe_cluster", "spotify_url"]].values
+customdata = df[["track_name", "artist_name", "genre", "emoji_vibe", "vibe_cluster", "link"]].values
 
 
 layout = html.Div([
@@ -50,7 +51,11 @@ layout = html.Div([
         options=[{'label': vibe, 'value': vibe} for vibe in df['vibe_cluster'].unique()],
         value=None,
         id='vibe-filter',
-        multi=True
+        multi=True,
+        dropdownStyle={
+        'backgroundColor': '#2c2c2c', # dropdown options bg
+        'color': '#f0f0f0',             # dropdown options text
+        }
     ),
     ], className="input-container"),
 
@@ -64,11 +69,13 @@ layout = html.Div([
 
 
     html.Div([
-        dcc.Graph(id='scatter-plot'),
+        dcc.Graph(id='scatter-plot', clickData=None),
+        html.Div(id='song-info', className="song-info-box")
     ], className="graph-container"),
     
     html.H3("Top 10 Songs by Popularity"),
-    html.Div(id='top-songs'),
+    
+    html.Div(id='top-songs', className="top-songs-box"),
 
     html.Div(id='song-details', style={'marginTop': 20})
     
@@ -97,11 +104,14 @@ def update_plot(selected_vibes, genre_text, artist_text):
         #filtered_df = filtered_df[filtered_df['artist_name'].str.contains(artist_text, case=False, na=False)]
         filtered_df = filtered_df[filtered_df['artist_name'].str.lower() == artist_text.lower()]
         
+    customdata2 = filtered_df[["track_name", "artist_name", "genre", "emoji_vibe", "vibe_cluster", "link"]].values
+
     fig = px.scatter(
         filtered_df, x='PCA1', y='PCA2',
         color='vibe_cluster',
         hover_data=['track_name', 'artist_name', 'genre'],
-        title="Songs by Mood/Vibe"
+        title="Songs by Mood/Vibe",
+        #custom_data=customdata2
     )
     
     fig.update_layout(
@@ -141,13 +151,13 @@ def update_plot(selected_vibes, genre_text, artist_text):
 
     fig.update_traces(
         hovertemplate=
-            "<b>%{customdata[0]}</b> %{customdata[4]}<br>" +  # track_name + emoji
+            "<b>%{customdata[0]}</b> %{customdata[3]}<br>" +  # track_name + emoji
             "Artist: %{customdata[1]}<br>" +                  # artist_name
-            "Vibe: %{customdata[5]}<br>" +                    # vibe_cluster name
-            "Genre: %{customdata[3]}<br>" +                   # genre
-            "<a href='%{customdata[6]}' target='_blank'>🎧 Listen</a>" +  # spotify_url
+            "Vibe: %{customdata[4]}<br>" +                    # vibe_cluster name
+            "Genre: %{customdata[2]}<br>" +                   # genre
+            #"<a href='%{customdata[6]}' target='_blank'>🎧 Listen</a>" +  # spotify_url
             "<extra></extra>",
-        customdata=customdata
+        customdata=customdata2
     )
     
     # Get top 10 songs by popularity
@@ -166,6 +176,23 @@ def update_plot(selected_vibes, genre_text, artist_text):
 ])
 
     return fig, top_songs_table
+
+@callback(
+    Output('song-info', 'children'),
+    Input('scatter-plot', 'clickData')
+)
+def display_song_info(clickData):
+    if clickData:
+        point = clickData['points'][0]['customdata']
+        name, artist, genre, emoji, vibe, link = point
+        return html.Div([
+            html.H3(f"{name} {emoji}"),
+            html.P(f"Artist: {artist}"),
+            html.P(f"Vibe: {vibe}"),
+            html.P(f"Genre: {genre}"),
+            html.A("🎧 Listen on Spotify", href=link, target="_blank", style={"color": "#ff69b4"})
+        ])
+    return "Click a point to see song details!"
 
 # if __name__ == '__main__':
 #     app.run(debug=True) 
