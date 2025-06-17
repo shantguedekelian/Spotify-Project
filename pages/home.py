@@ -27,17 +27,32 @@ def get_album_image(track_name, artist_name):
 
 # Load your data
 df = pd.read_csv("cleaned_spotify_features.csv")
+df['link'] = df['index'].apply(lambda x: f"https://open.spotify.com/search/{urllib.parse.quote(df.iloc[x]['track_name']+" "+df.iloc[x]['artist_name'])}")
+df['emoji_vibe'] = df['vibe_cluster'].map({
+    'Hype/Workout': "💪",
+    'Chill & Acoustic': "🌿",
+    'Angry/Intensity': "🔥",
+    'Sad & Soft': "😢",
+    'Feel Good/Dance': "💃",
+    'Moody Intensity': "🌌"
+})
+
+customdata = df[["track_name", "artist_name", "popularity", "genre", "emoji_vibe", "vibe_cluster", "spotify_url"]].values
+
 
 layout = html.Div([
     html.H1("🎵 Song Explorer by Mood"),
 
     html.Label("Filter by Vibe:"),
+    
+    html.Div([
     dcc.Dropdown(
         options=[{'label': vibe, 'value': vibe} for vibe in df['vibe_cluster'].unique()],
         value=None,
         id='vibe-filter',
         multi=True
     ),
+    ], className="input-container"),
 
     #genre search
     html.Label("Search by Genre:"),
@@ -47,7 +62,10 @@ layout = html.Div([
     html.Label("Search by Artist:"),
     dcc.Input(id='artist-input', type='text', placeholder='e.g. Drake, Taylor Swift'),
 
-    dcc.Graph(id='scatter-plot'),
+
+    html.Div([
+        dcc.Graph(id='scatter-plot'),
+    ], className="graph-container"),
     
     html.H3("Top 10 Songs by Popularity"),
     html.Div(id='top-songs'),
@@ -84,6 +102,52 @@ def update_plot(selected_vibes, genre_text, artist_text):
         color='vibe_cluster',
         hover_data=['track_name', 'artist_name', 'genre'],
         title="Songs by Mood/Vibe"
+    )
+    
+    fig.update_layout(
+        title={
+        'text': "Songs by Vibe",
+        'y': 0.97,  # vertical position
+        'x': 0.5,   # horizontal centering
+        'xanchor': 'center',
+        'yanchor': 'top',
+        'font': {
+            'size': 28,  # make it bigger
+            }
+        },
+        
+        xaxis=dict(showticklabels=False, title=None),
+        yaxis=dict(showticklabels=False, title=None),
+        plot_bgcolor="#48494B",     # Plot background
+        paper_bgcolor="#48494B",    # Outer background
+        font_color="#D9DDDC",
+        margin=dict(l=20, r=20, t=40, b=20),
+        
+        legend=dict(
+        title='Vibe',  # Rename legend title
+        font=dict(
+            size=16,     # Bigger text
+            family="Roboto, sans-serif",
+            color="white"
+        ),
+        title_font=dict(
+            size=18,
+            family="Roboto, sans-serif",
+            color="white"
+        ),
+        itemsizing='constant',  # Keep consistent size
+        )
+    )
+
+    fig.update_traces(
+        hovertemplate=
+            "<b>%{customdata[0]}</b> %{customdata[4]}<br>" +  # track_name + emoji
+            "Artist: %{customdata[1]}<br>" +                  # artist_name
+            "Vibe: %{customdata[5]}<br>" +                    # vibe_cluster name
+            "Genre: %{customdata[3]}<br>" +                   # genre
+            "<a href='%{customdata[6]}' target='_blank'>🎧 Listen</a>" +  # spotify_url
+            "<extra></extra>",
+        customdata=customdata
     )
     
     # Get top 10 songs by popularity
