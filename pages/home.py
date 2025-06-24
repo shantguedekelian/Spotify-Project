@@ -52,10 +52,6 @@ layout = html.Div([
         value=None,
         id='vibe-filter',
         multi=True,
-        dropdownStyle={
-        'backgroundColor': '#2c2c2c', # dropdown options bg
-        'color': '#f0f0f0',             # dropdown options text
-        }
     ),
     ], className="input-container"),
 
@@ -126,8 +122,8 @@ def update_plot(selected_vibes, genre_text, artist_text):
             }
         },
         
-        xaxis=dict(showticklabels=False, title=None),
-        yaxis=dict(showticklabels=False, title=None),
+        xaxis=dict(showticklabels=False, title=None, gridcolor='rgba(255, 255, 255, 0.1)'),
+        yaxis=dict(showticklabels=False, title=None, gridcolor='rgba(255, 255, 255, 0.1)'),
         plot_bgcolor="#48494B",     # Plot background
         paper_bgcolor="#48494B",    # Outer background
         font_color="#D9DDDC",
