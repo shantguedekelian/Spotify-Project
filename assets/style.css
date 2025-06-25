@@ -112,3 +112,36 @@ body {
     background-color: #2c2c2c;
     color: #f0f0f0;
   }
+
+  .input-container .Select-value-label {
+    color: #f0f0f0 !important;
+  }
+
+  .image-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+  
+  .album-image {
+    height: 128px;
+    border-radius: 8px;
+    display: block;
+  }
+  
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* allows the whole image to still be clickable */
+  }
+  
+  .image-container:hover .play-button {
+    opacity: 0.8;
+  }

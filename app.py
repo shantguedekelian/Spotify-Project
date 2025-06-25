@@ -7,7 +7,7 @@ import plotly.express as px
 df = pd.read_csv("cleaned_spotify_features.csv")
 
 #Setting up dash app
-app = dash.Dash(__name__, use_pages=True)
+app = dash.Dash(__name__, use_pages=True, suppress_callback_exceptions=True)
 server = app.server
 
 app.layout = html.Div([

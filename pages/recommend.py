@@ -23,23 +23,41 @@ df = pd.read_csv("cleaned_spotify_features.csv")  # Contains your clustered song
 
 layout = html.Div([
     html.H2("🎧 Get Song Recommendations"),
-    html.P("Enter a song name you like:"),
-    dcc.Input(id="song-input", type="text", placeholder="e.g. Blinding Lights", debounce=True),
-    html.Button("Get Recommendations", id="submit-button", n_clicks=0),
-    html.Div(id="recommend-output")
+    html.P("Enter a song name and the artist of the song you like:"),
+    dcc.Input(id="song-input", type="text", placeholder="e.g. Blinding Lights", debounce=True, style={"marginLeft": "15px"}),
+    dcc.Input(id="artist-input", type="text", placeholder="e.g. The Weeknd", debounce=True, style={"marginLeft": "15px"}),
+    html.Button("Get Recommendations", id="submit-button", n_clicks=0, style={"marginLeft": "15px"}),
+    html.Div([
+        html.P('Number of Recommendations'),
+        dcc.Dropdown(
+            options=[{'label': count, 'value': count} for count in range(5, 21, 5)],
+            value=10,
+            id='len-output',
+            multi=False,
+            style={"color":"#f0f0f0"}
+        ),
+    ], className="input-container"),
+    
+    html.Div(id="recommend-output", style={"marginLeft": "15px"})
 ])
 
 @callback(
     Output("recommend-output", "children"),
     Input("submit-button", "n_clicks"),
-    State("song-input", "value")
+    State("len-output", "value"),
+    State("song-input", "value"),
+    State("artist-input", "value")
 )
-def recommend_songs(n_clicks, song_input):
-    if not song_input:
-        return "Please enter a song name."
+def recommend_songs(n_clicks, len_output, song_input, artist_input):
+    if not (song_input and artist_input):
+        return "Please enter a song name and artist name."
+    
+    if len_output is None:
+        len_output = 10
 
     # Find close matches (can improve with fuzzy matching or similarity later)
-    matches = df[df['track_name'].str.contains(song_input, case=False, na=False)]
+    matches = df[(df['track_name'].str.contains(song_input, case=False, na=False)) & 
+                 (df['artist_name'].str.contains(artist_input, case=False, na=False))]
     if matches.empty:
         return "No matches found."
 
@@ -48,8 +66,12 @@ def recommend_songs(n_clicks, song_input):
     genre = matches.iloc[0]['genre']
 
     # Recommend songs in same cluster (excluding the original)
-    recs = df[(df['vibe_cluster'] == cluster) & (~df['track_name'].str.contains(song_input, case=False, na=False)) & (df['genre'] == genre)]
-    recs = recs.sort_values('popularity', ascending=False).head(10)
+    recs = df[(df['vibe_cluster'] == cluster) & 
+              (~df['track_name'].str.contains(song_input, case=False, na=False)) & 
+              (~df['artist_name'].str.contains(artist_input, case=False, na=False)) & 
+              (df['genre'] == genre)]
+    
+    recs = recs.sort_values('popularity', ascending=False).head(len_output)
     
     top_songs_table = html.Ul([
     html.Li([

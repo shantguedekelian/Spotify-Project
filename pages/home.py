@@ -182,6 +182,18 @@ def display_song_info(clickData):
         point = clickData['points'][0]['customdata']
         name, artist, genre, emoji, vibe, link = point
         return html.Div([
+            html.A(
+                html.Div([
+                    html.Img(
+                        src=get_album_image(name, artist),
+                        className="album-image"
+                    ),
+                    html.Div("▶", className="play-button")  # Unicode play icon
+                ], className="image-container"),
+                href=link,
+                target="_blank"
+            ),
+            
             html.H3(f"{name} {emoji}"),
             html.P(f"Artist: {artist}"),
             html.P(f"Vibe: {vibe}"),
