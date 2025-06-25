@@ -1,6 +1,7 @@
 ## Overview:
 
-Made a Plotly Dashboard that allows user to explore songs by vibes as well as genres. 
+Made a Plotly Dashboard that allows user to explore songs by vibes as well as genres. Most apps that explore music only allow genres or vibes, but what if you could use both to get a better sense of songs that you would like? In my app users can choose both the genre and vibe selectors to look at songs they might add next to their playlists! My app has two pages, one is used to discover songs by vibe and genre, and the other is a recommender system that allows you to input a song name and artist name and recommends you similar songs.
+
 
 ## Dataset Overview
 
@@ -82,3 +83,9 @@ music. Values below 0.33 most likely represent music and other non-speech-like t
 ## Aggregate Statistics
 
 ## Classifying Songs Into Moods
+
+# Plotly Dashboard
+
+## Home Page
+
+## Recommendation Page
