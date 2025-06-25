@@ -28,7 +28,7 @@ layout = html.Div([
     dcc.Input(id="artist-input", type="text", placeholder="e.g. The Weeknd", debounce=True, style={"marginLeft": "15px"}),
     html.Button("Get Recommendations", id="submit-button", n_clicks=0, style={"marginLeft": "15px"}),
     html.Div([
-        html.P('Number of Recommendations'),
+        html.P('Number of Recommendations:'),
         dcc.Dropdown(
             options=[{'label': count, 'value': count} for count in range(5, 21, 5)],
             value=10,
