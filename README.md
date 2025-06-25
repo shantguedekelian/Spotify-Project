@@ -3,3 +3,84 @@
 ## Overview:
 
 Made a Plotly Dashboard that allows user to explore songs by vibes as well as genres. 
+
+## Dataset Overview
+
+I got the dataset from kaggle, this is the link.
+
+Below is the first five rows of the dataset. Each row represents a unique song (or track).
+
+|    | genre   | artist_name       | track_name                       | track_id               |   popularity |   acousticness |   danceability |   duration_ms |   energy |   instrumentalness | key   |   liveness |   loudness | mode   |   speechiness |   tempo | time_signature   |   valence |
+|---:|:--------|:------------------|:---------------------------------|:-----------------------|-------------:|---------------:|---------------:|--------------:|---------:|-------------------:|:------|-----------:|-----------:|:-------|--------------:|--------:|:-----------------|----------:|
+|  0 | Movie   | Henri Salvador    | C'est beau de faire un Show      | 0BRjO6ga9RKCKjfDqeFgWV |            0 |          0.611 |          0.389 |         99373 |    0.91  |              0     | C#    |     0.346  |     -1.828 | Major  |        0.0525 | 166.969 | 4/4              |     0.814 |
+|  1 | Movie   | Martin & les fées | Perdu d'avance (par Gad Elmaleh) | 0BjC1NfoEOOusryehmNudP |            1 |          0.246 |          0.59  |        137373 |    0.737 |              0     | F#    |     0.151  |     -5.559 | Minor  |        0.0868 | 174.003 | 4/4              |     0.816 |
+|  2 | Movie   | Joseph Williams   | Don't Let Me Be Lonely Tonight   | 0CoSDzoNIKCRs124s9uTVy |            3 |          0.952 |          0.663 |        170267 |    0.131 |              0     | C     |     0.103  |    -13.879 | Minor  |        0.0362 |  99.488 | 5/4              |     0.368 |
+|  3 | Movie   | Henri Salvador    | Dis-moi Monsieur Gordon Cooper   | 0Gc6TVm52BwZD07Ki6tIvf |            0 |          0.703 |          0.24  |        152427 |    0.326 |              0     | C#    |     0.0985 |    -12.178 | Major  |        0.0395 | 171.758 | 4/4              |     0.227 |
+|  4 | Movie   | Fabien Nataf      | Ouverture                        | 0IuslXpMROHdEPvSl1fTQK |            4 |          0.95  |          0.331 |         82625 |    0.225 |              0.123 | F     |     0.202  |    -21.15  | Major  |        0.0456 | 140.576 | 4/4              |     0.39  |
+
+<br>
+
+The Columns of the Dataset Include:
+
+**`genre`**: what genre the song is 
+
+**`artist_name`**: the artist name
+
+**`track_name`**: the song name
+
+**`track_id`**: the song id (unique to each song)
+
+**`popularity`**: A score from 0 to 100 (higher = more popular), reflecting a track’s recent streaming counts and listener engagement.
+
+**`acousticness`**: A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high
+confidence the track is acoustic.
+
+**`danceability`**: It describes how suitable a track is for dancing based on a combination of musical
+elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least
+danceable and 1.0 is most danceable.
+
+**`duration_ms`**: Length of the track in milliseconds. Divide by 1,000 to convert to seconds
+
+**`energy`**: This is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity.
+Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a
+Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic
+range, perceived loudness, timbre, onset rate, and general entropy.
+
+**`instrumentalness`**: Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as
+instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the
+instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above
+0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.
+
+**`key`**: Integer (0–11) representing the musical key of the track using pitch class notation (0 = C, 1 = C♯/D♭, etc.). -1 indicates undetected.
+
+**`liveness`**: Float (0.0–1.0): probability that a track was performed live. Values >0.8 typically indicate live recordings.
+
+**`loudness`**: Overall loudness of the track in decibels (dB). Typical values range from about –60 to 0 dB
+
+**`mode`**: Musical modality: 1 = major, 0 = minor.
+
+**`speechiness`**: It detects the presence of spoken words in a track. The more exclusively speech-like the
+recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66
+describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe
+tracks that may contain both music and speech, either in sections or layered, including such cases as rap
+music. Values below 0.33 most likely represent music and other non-speech-like tracks.
+
+**`tempo`**: Estimated tempo in beats per minute (BPM).
+
+**`time_signature`**: Beats per bar (time signature), usually between 3 and 7 (e.g. 4 = 4/4 time)
+
+**`valence`**: Float (0.0–1.0): musical positiveness conveyed by the track (happy vs. negative).
+
+
+
+## API? 
+
+## EDA
+
+## Univariate Analysis
+
+## Bivariate Analysis
+
+## Aggregate Statistics
+
+## Classifying Songs Into Moods
