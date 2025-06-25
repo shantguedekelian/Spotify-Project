@@ -1,3 +1,4 @@
+By Shant Guedekelian
 ## Overview:
 
 Using a Spotify dataset from Kaggle, I performed **exploratory data analysis** (EDA) and created **visualizations** to uncover **key trends** in song characteristics. I then applied **Principal Component Analysis** (PCA) and trained a **classification model** using **scikit-learn** to categorize songs into one of six distinct **"vibe" clusters**.
