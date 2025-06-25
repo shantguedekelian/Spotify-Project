@@ -1,4 +1,5 @@
-By Shant Guedekelian
+
+
 ## Overview:
 
 Using a Spotify dataset from Kaggle, I performed **exploratory data analysis** (EDA) and created **visualizations** to uncover **key trends** in song characteristics. I then applied **Principal Component Analysis** (PCA) and trained a **classification model** using **scikit-learn** to categorize songs into one of six distinct **"vibe" clusters**.
@@ -79,17 +80,165 @@ music. Values below 0.33 most likely represent music and other non-speech-like t
 
 
 
-## API? 
-
 ## EDA
+First I got rid of any duplicate rows that were in the dataset, and then I checked for NaN values and there were none. meaning my dataset was now fully cleaned and had a row for each unique song id. Next I conducted 
 
-## Univariate Analysis
+### Bivariate Analysis
 
-## Bivariate Analysis
+### Aggregate Statistics
 
-## Aggregate Statistics
+Reggae is considered the happiest music genre followed by children's music. While opera and soundtrack is considered the saddest. 
+(soundtrack genre is the collection of music used in a film, television show, video game, or other media)
+
+| genre            |   valence |
+|:-----------------|----------:|
+| Reggae           |  0.679775 |
+| Children's Music |  0.675946 |
+| Reggaeton        |  0.65999  |
+| Ska              |  0.647291 |
+| Blues            |  0.580323 |
+| Country          |  0.534908 |
+
+<br>
+
+Ska, electronic, and alternative are notably the highest genre's in energy. Classical and Opera are the lowest (this makes sense)
+
+
+| genre            |   energy |
+|:-----------------|---------:|
+| Ska              | 0.836923 |
+| Reggaeton        | 0.748457 |
+| Electronic       | 0.739263 |
+| Alternative      | 0.713933 |
+| Children’s Music | 0.712646 |
+| Dance            | 0.696151 |
 
 ## Classifying Songs Into Moods
+
+Using scikit-learn and PCA, I got the following clusters and labeled them with a fitting vibe/mood that fits
+
+### Cluster 0:
+>Valence: 0.47 → neutral
+>
+>Energy: 0.41 → relaxed
+>
+>Danceability: 0.59 → somewhat danceable
+>
+>Acousticness: 0.76 → very acoustic
+>
+>Tempo: 108 BPM → moderate
+>
+
+**Mood/Vibe:**
+>"Chill & Acoustic"
+>
+>Mellow, slightly upbeat acoustic tracks — coffee shop vibes, soft indie.
+
+<br>
+
+### Cluster 1:
+
+>Valence: 0.70 → happy
+>
+>Energy: 0.77 → very energetic
+>
+>Danceability: 0.58 → somewhat danceable
+>
+>Acousticness: 0.16 → mostly electronic/instrumental
+>
+>Tempo: 157 BPM → very fast
+
+**Mood/Vibe:**
+>"Hype / Workout"
+>
+>High-energy, positive tracks — gym, running, EDM, fast pop.
+
+<br>
+
+### Cluster 2:
+
+>Valence: 0.34 → a bit sad
+>
+>Energy: 0.71 → energetic
+>
+>Danceability: 0.57 → moderate
+>
+>Acousticness: 0.14 → electronic
+>
+>Tempo: 103 BPM → medium
+
+**Mood/Vibe:**
+>"Moody Intensity"
+>
+>Emotionally heavy but energetic — alt rock, rap, intense vibes.
+
+<br>
+
+### Cluster 3:
+
+>Valence: 0.13 → very sad
+>
+>Energy: 0.16 → very calm
+>
+>Danceability: 0.28 → low
+>
+>Acousticness: 0.88 → very acoustic
+>
+>Tempo: 100 BPM → slow
+
+**Mood/Vibe:**
+
+>"Sad & Soft"
+>
+>Depressing or emotional acoustic tracks — breakup music, slow ballads.
+
+<br>
+
+### Cluster 4:
+
+>Valence: 0.28 → sad
+>
+>Energy: 0.68 → high
+>
+>Danceability: 0.43 → low-moderate
+>
+>Acousticness: 0.18 → electronic
+>
+>Tempo: 154 BPM → fast
+
+**Mood/Vibe:**
+
+>"Angsty / Intense"
+>
+>Sad but energetic and fast — punk rock, fast rap, maybe rage-type music.
+
+<br>
+
+### Cluster 5:
+
+>Valence: 0.74 → happy
+>
+>Energy: 0.69 → upbeat
+>
+>Danceability: 0.73 → very danceable
+>
+>Acousticness: 0.20 → electronic
+>
+>Tempo: 106 BPM → moderate
+
+**Mood/Vibe:**
+
+>"Feel-Good / Dance"
+>
+>Upbeat and fun — feel-good pop, party music, mainstream dance.
+
+<br>
+
+Below is a visualization of the clusters
+
+--
+
+Then using the clusters, I created a new column that corresponds to each vibe.
 
 <br>
 
