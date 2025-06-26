@@ -85,6 +85,18 @@ First I got rid of any duplicate rows that were in the dataset, and then I check
 
 ### Bivariate Analysis
 
+Below is a Scatter Plot showing the relationship between the song's Danceability score and Valence Score (How happy the song is)
+
+<iframe
+  src="assets/dance_vs_valence.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<br>
+There is a clean relationship between the two suggesting that songs that are considered more danceable are happier.
+
 ### Aggregate Statistics
 
 Reggae is considered the happiest music genre followed by children's music. While opera and soundtrack is considered the saddest. 
@@ -236,7 +248,12 @@ Using scikit-learn and PCA, I got the following clusters and labeled them with a
 
 Below is a visualization of the clusters
 
---
+<iframe
+  src="assets/vibe_clusters.png"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 <br>
