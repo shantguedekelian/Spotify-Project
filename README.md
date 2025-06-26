@@ -1,4 +1,4 @@
-
+<br>
 
 ## Overview:
 
@@ -238,7 +238,6 @@ Below is a visualization of the clusters
 
 --
 
-Then using the clusters, I created a new column that corresponds to each vibe.
 
 <br>
 
