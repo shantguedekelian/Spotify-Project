@@ -248,12 +248,7 @@ Using scikit-learn and PCA, I got the following clusters and labeled them with a
 
 Below is a visualization of the clusters:
 
-<iframe
-  src="assets/vibe_clusters.png"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+<img src="assets/vibe_clusters.png" width="800" height="600" alt="Vibe Clusters Plot">
 
 
 <br>
