@@ -246,7 +246,7 @@ Using scikit-learn and PCA, I got the following clusters and labeled them with a
 
 <br>
 
-Below is a visualization of the clusters
+Below is a visualization of the clusters:
 
 <iframe
   src="assets/vibe_clusters.png"
