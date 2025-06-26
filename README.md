@@ -261,14 +261,28 @@ I decided to use a plotly dashboard as it integrates seemlessly with python and 
 
 ### Buttons at the top for song and artist
 
-### Graph container (the full dataset as dots, and also what it looks like when you click a point)
+there is a dropdown you can use to select what wibes you want. And you can also filter your search by the a genre and an artist you want to dive deeper into their discography.
 
-### Output (show the links too)
+<img src="assets/home-buttons-ezgif.com-optimize.gif" width="800" alt="Demo of Home buttons">
+
+### Graph container
+
+The plot shows all the songs in the dataset. When you hover over a point (song) it shows info about the song such as the title of the song, name of the artist, what genre its considered, and what vibe it has. The graph is also filtered by what vibe you select! As well as the genre and artist if you choose to sort by that as well. Finally if you click on a point, it gived you information about the song and also displays a clickable link that leads you to the spotify page where you can listen to the song!
+
+<img src="assets/home-graph-ezgif.com-speed.gif" width="800" alt="Demo of Home Graph">
+
+### Output
+
+The output below the graph shows the top 10 songs sorted by popularity that match the filters you have set. This allows users to explore popular songs in the vibes and genres they want to!
+
+<img src="assets/home-top10-ezgif.com-optimize.gif" width="800" alt="Demo of Home output">
 
 
 <br>
 
 ## **Recommendation Page**
+
+<img src="assets/recommender-ezgif.com-optimize.gif" width="800" alt="Demo of Recommender">
 
 ## Hosting
 
