@@ -1,6 +1,6 @@
 <br>
 
-## Overview:
+## **Overview:**
 
 Using a Spotify dataset from Kaggle, I performed **exploratory data analysis** (EDA) and created **visualizations** to uncover **key trends** in song characteristics. I then applied **Principal Component Analysis** (PCA) and trained a **classification model** using **scikit-learn** to categorize songs into one of six distinct **"vibe" clusters**.
 
@@ -11,7 +11,7 @@ Building on this, I developed an interactive **Plotly Dash web application** tha
 >**Recommender System:** Users input a song and artist name to receive **customized recommendations** for similar songs based on mood and style.
 
 
-## Dataset Overview
+## **Dataset Overview**
 
 I got the dataset from kaggle, this is the link.
 
@@ -80,10 +80,10 @@ music. Values below 0.33 most likely represent music and other non-speech-like t
 
 
 
-## EDA
+## **EDA**
 First I got rid of any duplicate rows that were in the dataset, and then I checked for NaN values and there were none. meaning my dataset was now fully cleaned and had a row for each unique song id. Next I conducted 
 
-### Bivariate Analysis
+### **Bivariate Analysis**
 
 Below is a Scatter Plot showing the relationship between the song's Danceability score and Valence Score (How happy the song is)
 
@@ -97,7 +97,7 @@ Below is a Scatter Plot showing the relationship between the song's Danceability
 <br>
 There is a clean relationship between the two suggesting that songs that are considered more danceable are happier.
 
-### Aggregate Statistics
+### **Aggregate Statistics**
 
 Reggae is considered the happiest music genre followed by children's music. While opera and soundtrack is considered the saddest. 
 (soundtrack genre is the collection of music used in a film, television show, video game, or other media)
@@ -125,7 +125,7 @@ Ska, electronic, and alternative are notably the highest genre's in energy. Clas
 | Children’s Music | 0.712646 |
 | Dance            | 0.696151 |
 
-## Classifying Songs Into Moods
+## **Classifying Songs Into Moods**
 
 Using scikit-learn and PCA, I got the following clusters and labeled them with a fitting vibe/mood that fits
 
@@ -255,6 +255,21 @@ Below is a visualization of the clusters:
 
 # **Plotly Dashboard**
 
-## Home Page
+I decided to use a plotly dashboard as it integrates seemlessly with python and plotly graphs and can lead to really nice and fresh looking pages.
 
-## Recommendation Page
+## **Home Page**
+
+### Buttons at the top for song and artist
+
+### Graph container (the full dataset as dots, and also what it looks like when you click a point)
+
+### Output (show the links too)
+
+
+<br>
+
+## **Recommendation Page**
+
+## Hosting
+
+To host the dashboard, I used ___.
