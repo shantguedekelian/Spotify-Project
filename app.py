@@ -10,6 +10,9 @@ df = pd.read_csv("cleaned_spotify_features.csv")
 app = dash.Dash(__name__, use_pages=True, suppress_callback_exceptions=True)
 server = app.server
 
+import pages.home
+import pages.recommend
+
 app.layout = html.Div([
     html.H1("Spotify Dashboard"),
     
@@ -25,4 +28,5 @@ app.layout = html.Div([
 #     app.run(debug=True)
     
 if __name__ == "__main__":
+    print("Page Registry:", dash.page_registry)
     app.run(host='0.0.0.0', port=8080, debug=False)
