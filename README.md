@@ -127,6 +127,8 @@ Ska, electronic, and alternative are notably the highest genre's in energy. Clas
 
 ## **Classifying Songs Into Moods**
 
+My goal was to classify songs into specific vibes that fit them so that users could filter through the songs based on what vibe of song they were looking for. To do this I used PCA from the scikit-learn toolkit. The reason I used PCA was because ___.
+
 Using scikit-learn and PCA, I got the following clusters and labeled them with a fitting vibe/mood that fits
 
 ### Cluster 0:
@@ -281,6 +283,8 @@ The output below the graph shows the top 10 songs sorted by popularity that matc
 <br>
 
 ## **Recommendation Page**
+
+The recommendation feature lets users input a song name and the artist its by, and output a list of songs that are most similar to it. Similarity is calculated using the cosine similarity between the two songs. 
 
 <img src="assets/recommender-ezgif.com-optimize.gif" width="800" alt="Demo of Recommender">
 
