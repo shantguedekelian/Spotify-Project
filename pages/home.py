@@ -3,7 +3,7 @@ from dash import html, dcc, Input, Output, callback
 import pandas as pd
 import plotly.express as px
 import urllib.parse
-from app import df
+from data import df
 
 dash.register_page(__name__, path='/')
 

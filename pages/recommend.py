@@ -2,7 +2,7 @@ import dash
 from dash import html, dcc, Input, Output, State, callback
 import pandas as pd
 import urllib.parse
-from app import df
+from data import df
 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
