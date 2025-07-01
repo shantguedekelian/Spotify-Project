@@ -3,6 +3,7 @@ from dash import html, dcc, Input, Output, callback
 import pandas as pd
 import plotly.express as px
 import urllib.parse
+from app import df
 
 dash.register_page(__name__, path='/')
 
@@ -26,7 +27,7 @@ def get_album_image(track_name, artist_name):
 
 
 # Load your data
-df = pd.read_csv("cleaned_spotify_features.csv")
+#df = pd.read_csv("cleaned_spotify_features.csv")
 df = df.drop(columns=['index'], axis=1).reset_index()
 df['link'] = df['index'].apply(lambda x: f"https://open.spotify.com/search/{urllib.parse.quote(df.iloc[x]['track_name']+" "+df.iloc[x]['artist_name'])}")
 df['emoji_vibe'] = df['vibe_cluster'].map({

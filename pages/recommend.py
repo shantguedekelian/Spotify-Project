@@ -2,6 +2,7 @@ import dash
 from dash import html, dcc, Input, Output, State, callback
 import pandas as pd
 import urllib.parse
+from app import df
 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -19,7 +20,7 @@ def get_album_image(track_name, artist_name):
 
 dash.register_page(__name__, path='/recommend')
 
-df = pd.read_csv("cleaned_spotify_features.csv")  # Contains your clustered song features
+#df = pd.read_csv("cleaned_spotify_features.csv")  # Contains your clustered song features
 
 layout = html.Div([
     html.H2("🎧 Get Song Recommendations"),
