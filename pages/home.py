@@ -29,15 +29,15 @@ def get_album_image(track_name, artist_name):
 # Load your data
 #df = pd.read_csv("cleaned_spotify_features.csv")
 df = df.drop(columns=['index'], axis=1).reset_index()
-df['link'] = df['index'].apply(lambda x: f"https://open.spotify.com/search/{urllib.parse.quote(df.iloc[x]['track_name']+" "+df.iloc[x]['artist_name'])}")
-df['emoji_vibe'] = df['vibe_cluster'].map({
-    'Hype/Workout': "💪",
-    'Chill & Acoustic': "🌿",
-    'Angry/Intensity': "🔥",
-    'Sad & Soft': "😢",
-    'Feel Good/Dance': "💃",
-    'Moody Intensity': "🌌"
-})
+# df['link'] = df['index'].apply(lambda x: f"https://open.spotify.com/search/{urllib.parse.quote(df.iloc[x]['track_name']+" "+df.iloc[x]['artist_name'])}")
+# df['emoji_vibe'] = df['vibe_cluster'].map({
+#     'Hype/Workout': "💪",
+#     'Chill & Acoustic': "🌿",
+#     'Angry/Intensity': "🔥",
+#     'Sad & Soft': "😢",
+#     'Feel Good/Dance': "💃",
+#     'Moody Intensity': "🌌"
+# })
 
 customdata = df[["track_name", "artist_name", "genre", "emoji_vibe", "vibe_cluster", "link"]].values
 
