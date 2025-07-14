@@ -1,5 +1,7 @@
 <br>
 
+Link to Plotly Dashboard: https://spotify-project-nk49.onrender.com/
+
 ## **Overview:**
 
 Using a Spotify dataset from Kaggle, I performed **exploratory data analysis** (EDA) and created **visualizations** to uncover **key trends** in song characteristics. I then applied **Principal Component Analysis** (PCA) and trained a **classification model** using **scikit-learn** to categorize songs into one of six distinct **"vibe" clusters**.
@@ -290,4 +292,4 @@ The recommendation feature lets users input a song name and the artist its by, a
 
 ## Hosting
 
-To host the dashboard, I used ___.
+To host the dashboard, I used Render. When you first boot up the app, it might take a while since Render has an automatic off feature where it shuts the app off if there is no activity for a while. I also had to cut down the dataset from 175,000 to 100,000 unique songs to avoid using too much memory as youre only alloted 512 MB of RAM. The website is a little slow but I hope it does a good job at showcasing the features and the overall structure of the project.
