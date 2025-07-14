@@ -24,9 +24,9 @@ app.layout = html.Div([
     dash.page_container
 ])
 
-if __name__ == "__main__":
-    app.run(debug=True)
-    
 # if __name__ == "__main__":
-#     print("Page Registry:", dash.page_registry)
-#     app.run(host='0.0.0.0', port=8080, debug=False)
+#     app.run(debug=True)
+    
+if __name__ == "__main__":
+    print("Page Registry:", dash.page_registry)
+    app.run(host='0.0.0.0', port=8080, debug=False)

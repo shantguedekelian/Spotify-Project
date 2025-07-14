@@ -15,7 +15,7 @@ def get_album_image(track_name, artist_name):
         return results['tracks']['items'][0]['album']['images'][0]['url']  # high-res image
     return None
 
-df = pd.read_csv('cleaned_spotify_features2.csv')
+df = pd.read_csv('cleaned_spotify_features3.csv')
 # df['link'] = df['index'].apply(lambda x: f"https://open.spotify.com/search/{urllib.parse.quote(df.iloc[x]['track_name']+" "+df.iloc[x]['artist_name'])}")
 # df['emoji_vibe'] = df['vibe_cluster'].map({
 #     'Hype/Workout': "💪",
