@@ -1,21 +1,25 @@
 <br>
+ 
+<a href="https://spotify-project-nk49.onrender.com/">Link to Plotly Dashboard</a>
 
-Link to Plotly Dashboard: https://spotify-project-nk49.onrender.com/
+<href></href>
 
 ## **Overview:**
 
-Using a Spotify dataset from Kaggle, I performed **exploratory data analysis** (EDA) and created **visualizations** to uncover **key trends** in song characteristics. I then applied **Principal Component Analysis** (PCA) and trained a **classification model** using **scikit-learn** to categorize songs into one of six distinct **"vibe" clusters**.
+This project explores a Spotify dataset sourced from Kaggle through **exploratory data analysis** (EDA) and **visualizations** to uncover **key patterns** in song characteristics. Leveraging these insights, I applied **Principal Component Analysis** (PCA) and built a **classification model** using **scikit-learn** to categorize songs into one of six distinct “vibe” **clusters**.
 
-Building on this, I developed an interactive **Plotly Dash web application** that allows users to explore music based on both vibe and genre — a feature most music discovery tools lack, offering a more personalized way to find music that fits their taste. The app consists of two main pages:
+To bring this analysis to life, I developed an interactive web application using **Plotly Dash**. The app enables users to **explore** and **discover** music in a more personalized way using both genre and mood, a feature missing in most mainstream music discovery tools.
 
->**Song Explorer:** Users can filter and browse songs by **mood** and **genre** to discover tracks that match their personal preferences.
+>**Song Explorer:** Filter and browse songs by **vibe** and **genre** to discover tracks that align with your mood and taste.
 >
->**Recommender System:** Users input a song and artist name to receive **customized recommendations** for similar songs based on mood and style.
+>**Recommender System:** Enter a song and artist name to receive **personalized recommendations** for similar tracks based on musical style and mood.
 
 
 ## **Dataset Overview**
 
-I got the dataset from kaggle, this is the link.
+I got the dataset from <a href="https://www.kaggle.com/datasets/zaheenhamidani/ultimate-spotify-tracks-db">Kaggle</a>.
+
+
 
 Below is the first five rows of the dataset. Each row represents a unique song (or track).
 
@@ -87,7 +91,7 @@ First I got rid of any duplicate rows that were in the dataset, and then I check
 
 ### **Bivariate Analysis**
 
-Below is a Scatter Plot showing the relationship between the song's Danceability score and Valence Score (How happy the song is)
+Below is a **scatter plot** showing the relationship between a song's **Danceability score** and its **Valence score** (i.e., how happy the song is):
 
 <iframe
   src="assets/dance_vs_valence.html"
@@ -97,12 +101,13 @@ Below is a Scatter Plot showing the relationship between the song's Danceability
 ></iframe>
 
 <br>
-There is a clean relationship between the two suggesting that songs that are considered more danceable are happier.
+There appears to be a **clear positive relationship** between the two where songs that are considered **more danceable** also tend to be **happier** in mood.
 
 ### **Aggregate Statistics**
 
-Reggae is considered the happiest music genre followed by children's music. While opera and soundtrack is considered the saddest. 
-(soundtrack genre is the collection of music used in a film, television show, video game, or other media)
+**Reggae** is considered the **happiest music genre**, followed closely by **children's music**. On the other hand, genres like **opera** and **soundtrack** are among the **saddest** based on their average valence scores.
+
+> *Note: The "soundtrack" genre refers to music used in films, television shows, video games, or other media.*
 
 | genre            |   valence |
 |:-----------------|----------:|
@@ -115,8 +120,7 @@ Reggae is considered the happiest music genre followed by children's music. Whil
 
 <br>
 
-Ska, electronic, and alternative are notably the highest genre's in energy. Classical and Opera are the lowest (this makes sense)
-
+**Ska**, **electronic**, and **alternative** music are notably the **highest-energy genres**. In contrast, **classical** and **opera** have the **lowest average energy levels**, which aligns with their typically softer and more acoustic nature.
 
 | genre            |   energy |
 |:-----------------|---------:|
@@ -129,9 +133,11 @@ Ska, electronic, and alternative are notably the highest genre's in energy. Clas
 
 ## **Classifying Songs Into Moods**
 
-My goal was to classify songs into specific vibes that fit them so that users could filter through the songs based on what vibe of song they were looking for. To do this I used PCA from the scikit-learn toolkit. The reason I used PCA was because ___.
+My goal was to classify songs into specific **vibes** so that users could easily filter and discover music based on the **mood or energy** they were looking for. 
 
-Using scikit-learn and PCA, I got the following clusters and labeled them with a fitting vibe/mood that fits
+To achieve this, I used **Principal Component Analysis (PCA)** from the **scikit-learn** toolkit. The reason I chose PCA was because it helps **reduce the high-dimensional feature space** of the Spotify dataset (e.g., danceability, energy, valence, etc.) into a smaller number of components that **preserve most of the variance**. This not only made the data easier to visualize and interpret, but also helped improve clustering performance by removing noise and redundancy.
+
+Using **PCA** along with clustering, I generated the following groups and **labeled each cluster** with a mood or "vibe" that best fits the songs within it.
 
 ### Cluster 0:
 >Valence: 0.47 → neutral
@@ -259,25 +265,28 @@ Below is a visualization of the clusters:
 
 # **Plotly Dashboard**
 
-I decided to use a plotly dashboard as it integrates seemlessly with python and plotly graphs and can lead to really nice and fresh looking pages.
+I decided to use a **Plotly Dash** dashboard because it integrates seamlessly with **Python** and **Plotly visualizations**, allowing for the creation of **modern, interactive, and visually appealing** web pages.
 
 ## **Home Page**
 
 ### Buttons at the top for song and artist
 
-there is a dropdown you can use to select what wibes you want. And you can also filter your search by the a genre and an artist you want to dive deeper into their discography.
+The app features a **dropdown menu** that lets users select one or more **vibes** they’re interested in. Users can also **filter songs by genre** and **explore an artist's discography** in more detail by selecting a specific artist. This makes it easy to dive deeper into music that matches both the mood and the musical style you're looking for.
 
 <img src="assets/home-buttons-ezgif.com-optimize.gif" width="800" alt="Demo of Home buttons">
 
 ### Graph container
 
-The plot shows all the songs in the dataset. When you hover over a point (song) it shows info about the song such as the title of the song, name of the artist, what genre its considered, and what vibe it has. The graph is also filtered by what vibe you select! As well as the genre and artist if you choose to sort by that as well. Finally if you click on a point, it gived you information about the song and also displays a clickable link that leads you to the spotify page where you can listen to the song!
+The plot displays **all the songs** in the dataset. When you **hover over a point**, it reveals key information about the song — including the **track title**, **artist name**, **genre**, and assigned **vibe**. The graph is **fully interactive** and updates dynamically based on the **vibe**, **genre**, and **artist** filters selected by the user.
+
+Additionally, if you **click on a point**, more detailed information about that song is shown, along with a **clickable link to the song on Spotify**, allowing users to listen instantly.
 
 <img src="assets/home-graph-ezgif.com-speed.gif" width="800" alt="Demo of Home Graph">
 
 ### Output
 
-The output below the graph shows the top 10 songs sorted by popularity that match the filters you have set. This allows users to explore popular songs in the vibes and genres they want to!
+The output below the graph displays the **top 10 songs** sorted by **popularity** that match the filters you’ve set. This allows users to easily **explore popular songs** within the specific **vibes** and **genres** they’re interested in!
+
 
 <img src="assets/home-top10-ezgif.com-optimize.gif" width="800" alt="Demo of Home output">
 
@@ -286,10 +295,20 @@ The output below the graph shows the top 10 songs sorted by popularity that matc
 
 ## **Recommendation Page**
 
-The recommendation feature lets users input a song name and the artist its by, and output a list of songs that are most similar to it. Similarity is calculated using the cosine similarity between the two songs. 
+The **recommendation feature** lets users input a **song name** and the **artist**, and returns a list of songs that are most **similar** to it. Similarity is calculated using **cosine similarity** between the songs' audio features, helping users discover tracks with a similar vibe and style.
+
 
 <img src="assets/recommender-ezgif.com-optimize.gif" width="800" alt="Demo of Recommender">
 
 ## Hosting
 
-To host the dashboard, I used Render. When you first boot up the app, it might take a while since Render has an automatic off feature where it shuts the app off if there is no activity for a while. I also had to cut down the dataset from 175,000 to 100,000 unique songs to avoid using too much memory as youre only alloted 512 MB of RAM. The website is a little slow but I hope it does a good job at showcasing the features and the overall structure of the project.
+To **host the dashboard**, I used **Render**. When you first load the app, it might take a few moments since Render automatically puts the app to sleep when there's no activity for a while (to conserve resources). I also had to reduce the dataset from **175,000** to **100,000 unique songs** to stay within the **512 MB RAM** limit of the free plan. While the website may be a bit slow, I hope it effectively showcases the app's features and the overall structure of the project.
+
+
+## Final Thoughts
+
+This project combines **data science**, **machine learning**, and **interactive web development** to create a fun and personalized way to explore music. From clustering songs into mood-based vibes to building a dynamic dashboard for discovery and recommendations, I aimed to build something that’s both technically rich and engaging for users.
+
+Whether you're curious about the mood distribution of your favorite genre, or looking for songs that match your current vibe, I hope this app provides an enjoyable and insightful experience.
+
+Thank you for checking out my project!
